@@ -17,7 +17,7 @@ import javax.swing.JLabel;
     private String vehColor;
     private int vehKilometros;
  */
-public class Etiquetas extends JLabel{
+public class EtiquetasFormularios extends JLabel{
     
     //Etiquetas para vehiculo
     JLabel placa, marca, modelo, año, capacidad, color, kilometros;

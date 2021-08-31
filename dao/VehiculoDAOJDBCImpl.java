@@ -78,7 +78,7 @@ public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
         Connection conn = null;
         try{
             conn = Conexion.getConnection();
-            String sql = "Insert into vehiculo(vehPlaca, vehMarca, vehModelo, vehAnio, vehCapacidad, vehColor, vehKilometros) values (?, ?, ?, ?, ?, ?, ?)";
+            String sql = "Insert into vehiculo(veh_placa, veh_marca, veh_modelo, veh_anio, veh_capacidad, veh_color, veh_kilometros) values (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, vehiculo.getVehPlaca());
             statement.setString(2, vehiculo.getVehMarca());

@@ -27,7 +27,7 @@ public class FPrincipal extends JFrame{
     
     private void initComponents(){
         //configuracion de ventana
-        setTitle("Principal");
+        setTitle("Modelo Vista Controlador Luber");
         setSize(800, 600);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         

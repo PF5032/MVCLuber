@@ -5,20 +5,27 @@
  */
 package view.FI_Vehiculos;
 import javax.swing.JInternalFrame;
-import components.EntradasTexto;
-import components.Etiquetas;
-import java.util.ArrayList;
+import components.EntradasTextoFormularios;
+import components.EtiquetasFormularios;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import util.SpringUtilities;
-import components.Botones;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+
+//importo al modelo de vehiculos para hacer la respectiva insercion de datos
+import model.Vehiculo;
+
+//importo al controlador de vehiculo
+import controller.VehiculoController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,14 +39,17 @@ public class RegistroVehiculos{
     //panel principal
     JPanel panel;
     
+    //botones
+    JButton RegistrarVeh, EditarVeh, EliminarVeh, MostrarVeh;
+    
     //etiquetas
-    Etiquetas etiquetas;
+    EtiquetasFormularios etiquetas;
     
     //entradas de texto
-    EntradasTexto entradas;
+    EntradasTextoFormularios entradas;
     
-    //botones
-    Botones boton_registrar;
+    //Creo una instancia para el controlador de vehiculos
+    VehiculoController vehiculoControlador;
     
     public RegistroVehiculos(){
         //configuracion de la ventana
@@ -50,16 +60,19 @@ public class RegistroVehiculos{
         vehiculoForm.setMaximizable(true);
         
         //creo el panel principal
-        panel = new JPanel(new SpringLayout());
+        panel = new JPanel(new SpringLayout()); //new SpringLayout() 
         
         //etiquetas
-        etiquetas = new Etiquetas();
+        etiquetas = new EtiquetasFormularios();
         //placa, marca, modelo, año, capacidad, color, kilometros
         //entradas de texto
-        entradas = new EntradasTexto();
+        entradas = new EntradasTextoFormularios();
         
         //botones
-        boton_registrar = new Botones();
+        RegistrarVeh = new JButton("Registrar");
+        
+        //controlador
+        vehiculoControlador = new VehiculoController();
         
         //etiquetas de vehiculo
         etiquetas.setPlaca(new JLabel("Placa"));
@@ -70,60 +83,84 @@ public class RegistroVehiculos{
         etiquetas.setColor(new JLabel("Color"));
         etiquetas.setKilometros(new JLabel("Kilometros"));
         
-        //boton registrar
-        boton_registrar.setDefaultButtonRegistrar(new JButton("Registrar"));
-        
         //placa
         panel.add(etiquetas.getPlaca());
-        panel.add(entradas.getVehPlaca());
+        panel.add(entradas.getTextFieldVehPlaca());
         
         //marca
         panel.add(etiquetas.getMarca());
-        panel.add(entradas.getVehMarca());
+        panel.add(entradas.getTextFieldVehMarca());
         //modelo
         panel.add(etiquetas.getModelo());
-        panel.add(entradas.getVehModelo());
+        panel.add(entradas.getTextFieldVehModelo());
         
         //año
         panel.add(etiquetas.getAño());
-        panel.add(entradas.getVehAño());
+        panel.add(entradas.getTextFieldVehAño());
         
         //capacidad
         panel.add(etiquetas.getCapacidad());
-        panel.add(entradas.getVehCapacidad());
+        panel.add(entradas.getTextFieldVehCapacidad());
         
         //color
         panel.add(etiquetas.getColor());
-        panel.add(entradas.getVehColor());
+        panel.add(entradas.getTextFieldVehColor());
         
         //kilometros
         panel.add(etiquetas.getKilometros());
-        panel.add(entradas.getVehKilometros());
+        panel.add(entradas.getTextFieldVehKilometros());
         
         //botones
-        //panel.add(boton_registrar);
+        //panel.add();
         
         //agrego todos los componentes a mi formulario principal
         //vehiculoForm.add(panel_principal);
         
+        //eventos para los botones
+        RegistrarVeh.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                String placa = entradas.getTextFieldVehPlaca().getText();
+                String marca = entradas.getTextFieldVehMarca().getText();
+                String modelo = entradas.getTextFieldVehModelo().getText();
+                int año = Integer.parseInt(entradas.getTextFieldVehAño().getText());
+                int capacidad = Integer.parseInt(entradas.getTextFieldVehCapacidad().getText());
+                String color = entradas.getTextFieldVehColor().getText();
+                int kilometraje = Integer.parseInt(entradas.getTextFieldVehKilometros().getText());
+                Vehiculo vehiculo = new Vehiculo(placa, marca, modelo, año, capacidad, color, kilometraje);
+                vehiculoControlador.agregarVehiculo(vehiculo);
+                JOptionPane.showMessageDialog(null, "Registro creado de manera exitosa");
+            }
+        });
+        //ubicacion de los paneles
         SpringUtilities.makeCompactGrid(panel, 
                                         7, 2, 
-                                        10, 6,
-                                        6, 6);
+                                        20, 30,
+                                        20, 20);
+        
         //creo el panel principal
         JPanel panel_principal = new JPanel();
         
         //Paso el contenido del panel
         vehiculoForm.setContentPane(panel_principal);
         panel_principal.add(panel);
+        //panel_principal.setBackground(Color.red);
+        //panel.setBackground(Color.yellow);
+        
+        //ubicacion del panel
+        //panel.setLayout(new FlowLayout(FlowLayout.TRAILING));
         
         //variables para pruebas
         
         
         //creo un panel nuevo para los botones
         JPanel panel_botones = new JPanel();
-        panel_botones.add(boton_registrar.getDefaultButtonRegistrar());
+        
+        panel_botones.add(RegistrarVeh);
+        //panel_botones.setBackground(Color.green);
+        panel_botones.setLocation(120, 0);
         panel_principal.add(panel_botones, BorderLayout.PAGE_END);
+        
         //vehiculoForm.add(panel_principal, BorderLayout.CENTER);
         
     }
@@ -131,5 +168,4 @@ public class RegistroVehiculos{
     public JInternalFrame getVehiculoForm() {
         return vehiculoForm;
     }
-
 }

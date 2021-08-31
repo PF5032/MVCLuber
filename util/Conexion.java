@@ -27,8 +27,8 @@ public class Conexion {
                     Properties.password
             );
             if(conn != null){
-                //System.out.println("*** conexion exitosa ***");
-                JOptionPane.showMessageDialog(null, "Conexion exitosa.");
+                System.out.println("*** conexion exitosa ***");
+                //JOptionPane.showMessageDialog(null, "Conexion exitosa.");
                 return conn;
             }
         } catch(SQLException ex){

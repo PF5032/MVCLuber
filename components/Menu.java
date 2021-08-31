@@ -19,14 +19,20 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import components.MenuItemPrincipal;
+import components.MenuItems;
 
 public class Menu extends JMenuBar{
     
     //creo el menu y luego le agrego los respectivos items
     JMenuBar MenuPrincipal; //este es como el contenido principal
-    JMenu Vehiculo, Viaje, Usuario, Conductor;//este es el item que va a tener el menu
-    JMenuItem Registrar, Editar, Eliminar, Mostrar;
-    JInternalFrame frame_interno;
+    
+    //traigo los items principales del menu
+    MenuItemPrincipal menuItemPrincipal;
+    
+    //traigo los items de la clase MenuItems
+    MenuItems menuItems;
+    
     //JDesktopPane escritorio;
     JDesktopPane escritorio;
     //frame de registro
@@ -38,26 +44,36 @@ public class Menu extends JMenuBar{
         MenuPrincipal = new JMenuBar();
         //setJMenuBar(MenuPrincipal);
         escritorio = new JDesktopPane();
-        //Ahora agrego los items del menu
-        Vehiculo = new JMenu("Vehiculo");
         
-        //Agrego Vehiculo al menu
-        MenuPrincipal.add(Vehiculo);
+        //para las entradas principales del menu
+        menuItemPrincipal = new MenuItemPrincipal();
         
-        //ahora los items de esa opcion
-        Registrar = new JMenuItem("Registrar vehiculos");
-        Editar = new JMenuItem("Editar vehiculos");
-        Eliminar = new JMenuItem("Eliminar vehiculos");
-        Mostrar = new JMenuItem("Mostrar vehiculos");
+        //para los items de la entrada principal
+        menuItems = new MenuItems();
         
-        //Los agrego a su respectivo apartado
-        Vehiculo.add(Registrar);
-        Vehiculo.add(Editar);
-        Vehiculo.add(Eliminar);
-        Vehiculo.add(Mostrar);
+        //Agrego los items al menu principal
+        MenuPrincipal.add(menuItemPrincipal.getVehiculo_principal());
+        MenuPrincipal.add(menuItemPrincipal.getUsuario_principal());
+        MenuPrincipal.add(menuItemPrincipal.getConductor_principal());
+        MenuPrincipal.add(menuItemPrincipal.getViaje_principal());
+        
+        //Agrego los items a la opcion principal
+        menuItemPrincipal.getVehiculo_principal().add(menuItems.getRegistrar_veh());
+        menuItemPrincipal.getVehiculo_principal().add(menuItems.getEditar_veh());
+        menuItemPrincipal.getVehiculo_principal().add(menuItems.getEliminar_veh());
+        menuItemPrincipal.getVehiculo_principal().add(menuItems.getMostrar_veh());
+        
+        /*Usuario_principal.add(Registrar_usu);
+        Usuario_principal.add(Mostrar_usu);
+        
+        Conductor_principal.add(Registrar_con);
+        Conductor_principal.add(Mostrar_con);
+        
+        Viaje_principal.add(Registrar_via);
+        Viaje_principal.add(Mostrar_via);*/
         
         //metodo de escucha para el formulario de registro
-        Registrar.addActionListener(new ActionListener() {
+        menuItems.getRegistrar_veh().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 //JDesktopPane escritorio = new JDesktopPane();
@@ -67,21 +83,21 @@ public class Menu extends JMenuBar{
         });
         
         //metodo de escucha para el formulario editar, eliminar, mostrar
-        Editar.addActionListener(new ActionListener() {
+       /* Editar_veh.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 btnEditar();
             }
         });
         
-        Eliminar.addActionListener(new ActionListener() {
+        Eliminar_veh.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 btnEliminar();
             }
-        });
+        });*/
         
-        Mostrar.addActionListener(new ActionListener() {
+        menuItems.getMostrar_veh().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 btnMostrar();
