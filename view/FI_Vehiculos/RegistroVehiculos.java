@@ -24,7 +24,7 @@ import javax.swing.JButton;
  *
  * @author Lau
  */
-public class FI{
+public class RegistroVehiculos{
     
     //formulario principal
     JInternalFrame vehiculoForm;
@@ -41,7 +41,7 @@ public class FI{
     //botones
     Botones boton_registrar;
     
-    public FI(){
+    public RegistroVehiculos(){
         //configuracion de la ventana
         vehiculoForm = new JInternalFrame();
         vehiculoForm.setTitle("Registro vehiculos");

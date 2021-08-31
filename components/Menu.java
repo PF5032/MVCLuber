@@ -30,7 +30,7 @@ public class Menu extends JMenuBar{
     //JDesktopPane escritorio;
     JDesktopPane escritorio;
     //frame de registro
-    FI registroVehiculos;
+    RegistroVehiculos registroVehiculos;
     
     public Menu() {
         //Aqui creo todo lo respectivo que tenga que ver con el menu
@@ -102,7 +102,7 @@ public class Menu extends JMenuBar{
             //frame_interno.setVisible(true);
             */
             
-            registroVehiculos = new FI();
+            registroVehiculos = new RegistroVehiculos();
             registroVehiculos.getVehiculoForm();
             escritorio.add(registroVehiculos.getVehiculoForm());
             registroVehiculos.getVehiculoForm().setVisible(true);
