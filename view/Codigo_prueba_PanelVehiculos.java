@@ -13,11 +13,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 
-public class PanelVehiculos extends JPanel{
+public class Codigo_prueba_PanelVehiculos extends JPanel{
     private JTable table;
     VehiculoController controller;
     
-    public PanelVehiculos(VehiculoController controller){
+    public Codigo_prueba_PanelVehiculos(VehiculoController controller){
         this.controller = controller;
         initComponents();
     }

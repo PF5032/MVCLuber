@@ -9,6 +9,6 @@ package view;
  *
  * @author Lau
  */
-public class RegistroVehiculos {
+public class Codigo_prueba_RegistroVehiculos {
     
 }
