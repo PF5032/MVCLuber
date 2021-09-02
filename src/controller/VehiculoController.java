@@ -45,6 +45,27 @@ public class VehiculoController {
         return model;
     }
     
+    //implemento el modelo que me trae la sentencia like del daoimpl
+    public DefaultTableModel buscarVehiculos(String placa){
+        //un arreglo del tipo string para obtener los atributos de vehiculo
+        String[] titulos = {"Placa", "Marca", "Modelo", "Año", "Capacidad", "Color", "Kilometros"};
+        
+        DefaultTableModel model = new DefaultTableModel(null, titulos);
+        List<VehiculoModel> vehiculos = vehiculoDAO.buscarVehiculos(placa);
+        for(VehiculoModel vehiculo: vehiculos){
+            String[] fila = new String[7];
+            fila[0] = vehiculo.getVehPlaca()+"";
+            fila[1] = vehiculo.getVehMarca()+"";
+            fila[2] = vehiculo.getVehModelo()+"";
+            fila[3] = vehiculo.getVehAnio()+"";
+            fila[4] = vehiculo.getVehCapacidad()+"";
+            fila[5] = vehiculo.getVehColor()+"";
+            fila[6] = vehiculo.getVehKilometros()+"";
+            model.addRow(fila);
+        }
+        return model;
+    }
+    
     //lo otros metodos vienen del dao
     
     public void agregarVehiculo(VehiculoModel vehiculo){

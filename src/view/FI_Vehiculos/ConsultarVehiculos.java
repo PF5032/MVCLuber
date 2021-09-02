@@ -24,6 +24,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 import model.VehiculoModel;
@@ -87,26 +88,45 @@ public class ConsultarVehiculos extends JInternalFrame{
          tablaConsultaVehiculo.setModel(controladorVehiculo.consultarVehiculos());
          
          panel_contenedor.add(panel_datos);
-         panel_datos.add(tablaConsultaVehiculo);
+         panel_datos.add(new JScrollPane(tablaConsultaVehiculo));
          //lo agrego al formulario
          consultarVehiculo.setContentPane(panel_contenedor);
-         TableRowSorter trs;
-         trs = new TableRowSorter<>(controladorVehiculo.consultarVehiculos());
-         tablaConsultaVehiculo.setRowSorter(trs);
+         
+         //creo el respectivo evento para poder buscar sin necesidad de usar un boton
          entradas_formulario.getTextFieldConsultar_datos().addKeyListener(new KeyListener() {
+            
             @Override
-            public void keyTyped(KeyEvent ke) {
-                trs.setRowFilter(RowFilter.regexFilter(entradas_formulario.getTextFieldConsultar_datos().getText(), 0));
-            }
-
-            @Override
-            public void keyPressed(KeyEvent ke) {
-                trs.setRowFilter(RowFilter.regexFilter(entradas_formulario.getTextFieldConsultar_datos().getText(), 0));
+            public void keyPressed(KeyEvent ke) { //solo es de relleno, me los genera el netbeans.           
             }
 
             @Override
             public void keyReleased(KeyEvent ke) {
-                trs.setRowFilter(RowFilter.regexFilter(entradas_formulario.getTextFieldConsultar_datos().getText(), 0));
+                //defino una variable llamada caracter del evento del textfield
+                //la cual me sirve para analizar cada caracter que se ingresa en el campo
+                char caracter = ke.getKeyChar();
+                //creo la respectiva validacion para la tabla y el campo de texto
+                if(Character.isUpperCase(caracter)){ //verifico si el caracter ingresado es una mayuscula
+                    //En caso de serlo muestra la tabla con los datos respectivos a la placa que se ingreso
+                    //Se buscan coincidencias.
+                    tablaConsultaVehiculo.setModel(controladorVehiculo.buscarVehiculos(entradas_formulario.getTextFieldConsultar_datos().getText()));
+                    //el siguiente if es para verificar que no haya conflicto con la tecla enter, espacio y eliminar
+                    //es como una especie de pass, como el que se usa en el bucle while
+                } else if(ke.getKeyCode() == KeyEvent.VK_SPACE && ke.getKeyCode() == KeyEvent.VK_ENTER && ke.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+                    ke.consume();
+                    //Quiza hay otra manera de verificar para las minusculas, pero es lo mismo que en uppercase, no tengo que explicar mucho
+                } else if(Character.isLowerCase(caracter)){
+                    JOptionPane.showMessageDialog(null, "El campo solo deja ingresar letras mayusculas");
+                    //Verifico si la entrada es vacia, en caso de que lo sea devuelve la tabla con todos los datos
+                } else if(entradas_formulario.getTextFieldConsultar_datos().getText().isEmpty()){
+                    tablaConsultaVehiculo.setModel(controladorVehiculo.consultarVehiculos());
+                    //Por ultimo en caso tal de que la tabla no tenga registros de la entrada de datos, se mostrara que tal dato no existe
+                } else if(tablaConsultaVehiculo.getRowCount() == 0){
+                    JOptionPane.showMessageDialog(null, "El registro que trata de buscar no se encuentra en el tabla Vehiculo.");
+                }
+            }
+
+            @Override
+            public void keyTyped(KeyEvent ke) {//solo es relleno lo genera el netbeans                
             }
         });
     }

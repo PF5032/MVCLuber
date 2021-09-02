@@ -138,4 +138,29 @@ public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
             Logger.getLogger(VehiculoDAOJDBCImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    public List<VehiculoModel> buscarVehiculos(String placa) {
+        Connection conn = null; //definimos la variable para nuestra conexion
+        List<VehiculoModel> vehiculos = new ArrayList<>(); //creo el respectivo arreglo para los vehiculos
+        //creo la conexion
+        try{
+            conn = Conexion.getConnection(); //creo la conexion
+            String sql = "Select * from vehiculo where veh_placa like '%"+placa+"%'"; //creo la sentencia sql para ejecutar
+            Statement statement = conn.createStatement(); //creo el estado para luego 
+            ResultSet result = statement.executeQuery(sql); //ejecutar la sentencia o query
+            //int data = result.getRow();
+            //if(data > 0){
+            while(result.next()){
+                VehiculoModel vehiculo = new VehiculoModel(result.getString(1), result.getString(2), 
+                            result.getString(3), result.getInt(4), result.getInt(5), result.getString(6), result.getInt(7));
+                vehiculos.add(vehiculo);
+                }
+            
+        } catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Codigo : " + ex.getErrorCode() + "\nError : " + ex.getMessage());
+                    
+        }
+        return vehiculos;
+    }
 }

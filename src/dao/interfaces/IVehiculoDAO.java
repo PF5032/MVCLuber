@@ -28,4 +28,7 @@ public interface IVehiculoDAO {
     
     //el metodo para eliminar el registro del vehiculo
     public void elminarVehiculo(String placa);
+    
+    //para implementar like en la tabla y no usar el filtro
+    public List<VehiculoModel> buscarVehiculos(String placa);
 }

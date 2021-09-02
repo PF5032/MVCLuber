@@ -62,9 +62,6 @@ public class Menu extends JMenuBar{
         
         //Agrego los items al menu principal
         MenuPrincipal.add(menuItemPrincipal.getVehiculo_principal());
-        MenuPrincipal.add(menuItemPrincipal.getUsuario_principal());
-        MenuPrincipal.add(menuItemPrincipal.getConductor_principal());
-        MenuPrincipal.add(menuItemPrincipal.getViaje_principal());
         
         //Agrego los items a la opcion principal
         menuItemPrincipal.getVehiculo_principal().add(menuItems.getRegistrar_veh());
