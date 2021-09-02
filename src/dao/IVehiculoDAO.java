@@ -6,7 +6,7 @@
 package dao;
 
 import java.util.List;
-import model.Vehiculo;
+import model.VehiculoModel;
 
 /**
  *
@@ -14,17 +14,17 @@ import model.Vehiculo;
  */
 public interface IVehiculoDAO {
     //defino los metodos para usar los datos de vehiculo luego
-    public List<Vehiculo> obtenerVehiculos();
+    public List<VehiculoModel> obtenerVehiculos();
     
     //en mi caso al ser un vehiculo el cual se identifica por la placa
     //el atributo placa es una cadena mas no un entero
-    public Vehiculo obtenerVehiculo(String placa);
+    public VehiculoModel obtenerVehiculo(String placa);
     
     //el metodo para agregar un vehiculo nuevo
-    public void agregarVehiculo(Vehiculo vehiculo);
+    public void agregarVehiculo(VehiculoModel vehiculo);
     
     //el metodo para editar los valores del vehiculo dentro de la bd
-    public void actualizarVehiculo(Vehiculo vehiculo);
+    public void actualizarVehiculo(VehiculoModel vehiculo);
     
     //el metodo para eliminar el registro del vehiculo
     public void elminarVehiculo(String placa);

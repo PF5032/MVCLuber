@@ -1,23 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package components;
 
 import javax.swing.JTextField;
 
-/**
- *
- * //Etiquetas para usuario
-    JLabel cedula_usuario, nombres, apellidos, correo;
-    
-    //Etiquetas para conductor
-    JLabel cedula_conductor, vehPlacaC;
-    
-    //Etiquetas para viaje
-    JLabel id_viaje, viaje_cedula, conductor_cedula, via_fecha;
- */
+//author JP
+
 public class EntradasTextoFormularios extends JTextField{
 
     JTextField textFieldVehPlaca,textFieldVehMarca,
@@ -34,6 +20,9 @@ public class EntradasTextoFormularios extends JTextField{
     //Entradas de texto para viajes
     JTextField viaId, usuCedula_usuario, conCedula_con, viaFecha;
     
+    //Entrada para busquedas
+    JTextField textFieldConsultar_datos;
+    
     public EntradasTextoFormularios(){
         textFieldVehPlaca = new JTextField(7);
         textFieldVehMarca = new JTextField(10);
@@ -42,6 +31,7 @@ public class EntradasTextoFormularios extends JTextField{
         textFieldVehCapacidad = new JTextField(10);
         textFieldVehColor = new JTextField(10);
         textFieldVehKilometros = new JTextField(10);
+        textFieldConsultar_datos = new JTextField(20);
     }
 
     public JTextField getTextFieldVehPlaca() {
@@ -178,5 +168,13 @@ public class EntradasTextoFormularios extends JTextField{
 
     public void setViaFecha(JTextField viaFecha) {
         this.viaFecha = viaFecha;
+    }
+
+    public JTextField getTextFieldConsultar_datos() {
+        return textFieldConsultar_datos;
+    }
+
+    public void setTextFieldConsultar_datos(JTextField textFieldConsultar_datos) {
+        this.textFieldConsultar_datos = textFieldConsultar_datos;
     }
 }

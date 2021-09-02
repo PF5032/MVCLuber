@@ -9,7 +9,7 @@ import dao.IVehiculoDAO;
 import dao.VehiculoDAOJDBCImpl;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import model.Vehiculo;
+import model.VehiculoModel;
 
 /**
  *
@@ -28,8 +28,8 @@ public class VehiculoController {
         String[] titulos = {"Placa", "Marca", "Modelo", "Año", "Capacidad", "Color", "Kilometros"};
         
         DefaultTableModel model = new DefaultTableModel(null, titulos);
-        List<Vehiculo> vehiculos = vehiculoDAO.obtenerVehiculos(); //creo una variable la cual tendra los vehiculos que traera la consulta
-        for(Vehiculo vehiculo: vehiculos){
+        List<VehiculoModel> vehiculos = vehiculoDAO.obtenerVehiculos(); //creo una variable la cual tendra los vehiculos que traera la consulta
+        for(VehiculoModel vehiculo: vehiculos){
             String[] fila = new String[7]; //uso las mismas variables del ejemplo solo para guiarme
             fila[0] = vehiculo.getVehPlaca()+"";
             fila[1] = vehiculo.getVehMarca()+"";
@@ -45,11 +45,11 @@ public class VehiculoController {
     
     //lo otros metodos vienen del dao
     
-    public void agregarVehiculo(Vehiculo vehiculo){
+    public void agregarVehiculo(VehiculoModel vehiculo){
         vehiculoDAO.agregarVehiculo(vehiculo);
     }
     
-    public void actualizarVehiculo(Vehiculo vehiculo){
+    public void actualizarVehiculo(VehiculoModel vehiculo){
         vehiculoDAO.actualizarVehiculo(vehiculo);
     }
     

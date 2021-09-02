@@ -9,7 +9,7 @@ package model;
  *
  * @author Lau
  */
-public class Vehiculo {
+public class VehiculoModel {
     private String vehPlaca;
     private String vehMarca;
     private String vehModelo;
@@ -18,7 +18,7 @@ public class Vehiculo {
     private String vehColor;
     private int vehKilometros;
     
-    public Vehiculo(String vehPlaca, String vehMarca, String vehModelo, int vehAnio, int vehCapacidad, String vehColor, int vehKilometros){
+    public VehiculoModel(String vehPlaca, String vehMarca, String vehModelo, int vehAnio, int vehCapacidad, String vehColor, int vehKilometros){
         this.vehPlaca = vehPlaca;
         this.vehMarca = vehMarca;
         this.vehModelo = vehModelo;

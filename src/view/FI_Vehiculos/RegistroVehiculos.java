@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 //importo al modelo de vehiculos para hacer la respectiva insercion de datos
-import model.Vehiculo;
+import model.VehiculoModel;
 
 //importo al controlador de vehiculo
 import controller.VehiculoController;
@@ -130,7 +130,7 @@ public class RegistroVehiculos extends JInternalFrame{
                 int capacidad = Integer.parseInt(entradas.getTextFieldVehCapacidad().getText());
                 String color = entradas.getTextFieldVehColor().getText();
                 int kilometraje = Integer.parseInt(entradas.getTextFieldVehKilometros().getText());
-                Vehiculo vehiculo = new Vehiculo(placa, marca, modelo, año, capacidad, color, kilometraje);
+                VehiculoModel vehiculo = new VehiculoModel(placa, marca, modelo, año, capacidad, color, kilometraje);
                 vehiculoControlador.agregarVehiculo(vehiculo);
                 JOptionPane.showMessageDialog(null, "Registro creado de manera exitosa");
             }

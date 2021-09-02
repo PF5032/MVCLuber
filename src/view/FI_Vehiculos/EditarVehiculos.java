@@ -1,5 +1,6 @@
 package view.FI_Vehiculos;
 
+import components.EtiquetasFormularios;
 import javax.swing.JInternalFrame;
 import javax.swing.JTable;
 import java.awt.BorderLayout;
@@ -16,13 +17,17 @@ import util.SpringUtilities;
 
 //imports de controlador y modelo
 import controller.VehiculoController;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.LayoutManager;
 import java.sql.SQLException;
+import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import model.Vehiculo;
+import model.VehiculoModel;
 
 /**
  *
@@ -52,39 +57,49 @@ public class EditarVehiculos extends JInternalFrame{
         
         //En este apartado es donde se muestra la tabla con el contenido de la tabla
         //vehiculos
-        panel_vehiculos = new JPanel(new SpringLayout());
+        panel_vehiculos = new JPanel(new BorderLayout());
         tablaRegistroVehiculo = new JTable();
         setLayout(new BorderLayout());
         JScrollPane scroll = new JScrollPane(tablaRegistroVehiculo);
         add(scroll);
+        //nombres de la tabla
+        tablaRegistroVehiculo.setToolTipText("Registro vehiculos");
+        
         //Cargo la consulta que esta en el controlador vehiculos
         //para poder llenar la tabla
         tablaRegistroVehiculo.setModel(controladorVehiculo.consultarVehiculos());
         
-        //panel para contenido de vehiculos
-        
-        panel_vehiculos.add(tablaRegistroVehiculo);
-        
+        //panel para contenido de la tabla vehiculos
+        panel_vehiculos.add(tablaRegistroVehiculo, BorderLayout.PAGE_START);
+        panel_vehiculos.add(new JScrollPane(tablaRegistroVehiculo));
         //creo el panel principal
         JPanel panel_principal = new JPanel();
         
-        //Paso el contenido del panel
-        editarVehiculoForm.setContentPane(panel_principal);
-        panel_principal.add(tablaRegistroVehiculo);
+        //panel para las entradas de texto
+        JPanel entradaInformacion = new JPanel(new GridLayout(7, 1));
+        entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehPlaca());
+        entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehMarca());
+        entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehModelo());
+        entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehAño());
+        entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehCapacidad());
+        entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehColor());
+        entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehKilometros());
         
         //panel para botones
-        JPanel botones = new JPanel();
+        JPanel botones = new JPanel(new BorderLayout());
         JButton actualizar_datos = new JButton("Actualizar");
         botones.add(actualizar_datos);
-        panel_principal.add(botones);
-        //Agrego las entradas de texto del formulario de registro
-        panel_principal.add(registroVehiculo.entradas.getTextFieldVehPlaca());
-        panel_principal.add(registroVehiculo.entradas.getTextFieldVehMarca());
-        panel_principal.add(registroVehiculo.entradas.getTextFieldVehModelo());
-        panel_principal.add(registroVehiculo.entradas.getTextFieldVehAño());
-        panel_principal.add(registroVehiculo.entradas.getTextFieldVehCapacidad());
-        panel_principal.add(registroVehiculo.entradas.getTextFieldVehColor());
-        panel_principal.add(registroVehiculo.entradas.getTextFieldVehKilometros());
+        
+        //panel_vehiculos.add(botones, BorderLayout.SOUTH);
+        
+        //Paso el contenido del panel
+        editarVehiculoForm.setContentPane(panel_principal);
+        panel_principal.add(panel_vehiculos);
+        panel_principal.add(botones, BorderLayout.LINE_END);
+        panel_principal.add(entradaInformacion, BorderLayout.SOUTH);
+        
+        //Agrego el nuevo panel creado con las entradas
+        //panel_vehiculos.add(entradaInformacion, BorderLayout.CENTER);
         
         tablaRegistroVehiculo.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -107,7 +122,7 @@ public class EditarVehiculos extends JInternalFrame{
             public void actionPerformed(ActionEvent ae) {
                 System.out.println(registroVehiculo.entradas.getTextFieldVehPlaca().getText());
                 try{
-                Vehiculo vehiculo = new Vehiculo(registroVehiculo.entradas.getTextFieldVehPlaca().getText(), 
+                VehiculoModel vehiculo = new VehiculoModel(registroVehiculo.entradas.getTextFieldVehPlaca().getText(), 
                         registroVehiculo.entradas.getTextFieldVehMarca().getText(), 
                         registroVehiculo.entradas.getTextFieldVehModelo().getText(), 
                         Integer.parseInt(registroVehiculo.entradas.getTextFieldVehAño().getText()), 
@@ -129,3 +144,17 @@ public class EditarVehiculos extends JInternalFrame{
         return editarVehiculoForm;
     }
 }
+
+/*
+Codigo que alguna vez se uso
+
+esto iba en el panel principal del formulario
+panel_principal.add(registroVehiculo.entradas.getTextFieldVehPlaca());
+        panel_principal.add(registroVehiculo.entradas.getTextFieldVehMarca());
+        panel_principal.add(registroVehiculo.entradas.getTextFieldVehModelo());
+        panel_principal.add(registroVehiculo.entradas.getTextFieldVehAño());
+        panel_principal.add(registroVehiculo.entradas.getTextFieldVehCapacidad());
+        panel_principal.add(registroVehiculo.entradas.getTextFieldVehColor());
+        panel_principal.add(registroVehiculo.entradas.getTextFieldVehKilometros());
+
+*/

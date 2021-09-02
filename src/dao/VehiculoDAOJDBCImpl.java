@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import model.Vehiculo;
+import model.VehiculoModel;
 
 //importo la libreria conexion para su respectivo uso
 import util.Conexion;
@@ -28,9 +28,9 @@ import util.Conexion;
 public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
 
     @Override
-    public List<Vehiculo> obtenerVehiculos() {
+    public List<VehiculoModel> obtenerVehiculos() {
         Connection conn = null; //definimos la variable para nuestra conexion
-        List<Vehiculo> vehiculos = new ArrayList<>(); //creo el respectivo arreglo para los vehiculos
+        List<VehiculoModel> vehiculos = new ArrayList<>(); //creo el respectivo arreglo para los vehiculos
         
         //creo la conexion
         try{
@@ -39,7 +39,7 @@ public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
             Statement statement = conn.createStatement(); //creo el estado para luego 
             ResultSet result = statement.executeQuery(sql); //ejecutar la sentencia o query
             while(result.next()){
-                Vehiculo vehiculo = new Vehiculo(result.getString(1), result.getString(2), 
+                VehiculoModel vehiculo = new VehiculoModel(result.getString(1), result.getString(2), 
                             result.getString(3), result.getInt(4), result.getInt(5), result.getString(6), result.getInt(7));
                 vehiculos.add(vehiculo);
             }
@@ -51,10 +51,10 @@ public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
     }
 
     @Override
-    public Vehiculo obtenerVehiculo(String placa) {
+    public VehiculoModel obtenerVehiculo(String placa) {
         //creo la variable de conexion
         Connection conn = null;
-        Vehiculo vehiculo = null; //defino un objeto de vehiculo como nulo
+        VehiculoModel vehiculo = null; //defino un objeto de vehiculo como nulo
         try{
             conn = Conexion.getConnection();
             String sql = "Select * from vehiculo where vehPlaca=?";
@@ -62,7 +62,7 @@ public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
             statement.setString(1, placa);
             ResultSet result = statement.executeQuery(sql);
             while(result.next()){
-                vehiculo = new Vehiculo(result.getString(1), result.getString(2), result.getString(3), 
+                vehiculo = new VehiculoModel(result.getString(1), result.getString(2), result.getString(3), 
                             result.getInt(4), result.getInt(5), result.getString(6), result.getInt(7));
             }
         } catch (SQLException ex) {
@@ -73,7 +73,7 @@ public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
     }
 
     @Override
-    public void agregarVehiculo(Vehiculo vehiculo) {
+    public void agregarVehiculo(VehiculoModel vehiculo) {
         //metodo para agregar un vehiculo nuevo
         Connection conn = null;
         try{
@@ -99,7 +99,7 @@ public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
     }
 
     @Override
-    public void actualizarVehiculo(Vehiculo vehiculo) {
+    public void actualizarVehiculo(VehiculoModel vehiculo) {
         Connection conn = null;
         try{
             conn = Conexion.getConnection();
@@ -138,5 +138,4 @@ public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
             Logger.getLogger(VehiculoDAOJDBCImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }

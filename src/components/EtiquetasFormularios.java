@@ -6,16 +6,11 @@
 package components;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
- * private String vehPlaca;
-    private String vehMarca;
-    private String vehModelo;
-    private int vehAnio;
-    private int vehCapacidad;
-    private String vehColor;
-    private int vehKilometros;
+ * 
  */
 public class EtiquetasFormularios extends JLabel{
     
@@ -30,6 +25,9 @@ public class EtiquetasFormularios extends JLabel{
     
     //Etiquetas para viaje
     JLabel id_viaje, viaje_cedula, conductor_cedula, via_fecha;
+    
+    //tipos de joption
+    JLabel buscar_datos;
     
     public JLabel getPlaca() {
         return placa;
@@ -165,5 +163,13 @@ public class EtiquetasFormularios extends JLabel{
 
     public void setVia_fecha(JLabel via_fecha) {
         this.via_fecha = via_fecha;
+    }
+
+    public JLabel getBuscar_datos() {
+        return buscar_datos;
+    }
+
+    public void setBuscar_datos(JLabel buscar_datos) {
+        this.buscar_datos = buscar_datos;
     }
 }

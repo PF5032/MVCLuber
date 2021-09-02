@@ -14,32 +14,32 @@ import javax.swing.JMenuItem;
 public class MenuItems extends JMenuItem{
     
     //items de cada entrada principal del menu
-    JMenuItem Registrar_veh, Editar_veh, Eliminar_veh, Mostrar_veh
-            ,Registrar_usu, Editar_usu, Eliminar_usu, Mostrar_usu
-            ,Registrar_con, Editar_con, Eliminar_con, Mostrar_con
-            ,Registrar_via, Editar_via, Eliminar_via, Mostrar_via;
+    JMenuItem Registrar_veh, Editar_veh, Eliminar_veh, Consultar_veh
+            ,Registrar_usu, Editar_usu, Eliminar_usu, Consultar_usu
+            ,Registrar_con, Editar_con, Eliminar_con, Consultar_con
+            ,Registrar_via, Editar_via, Eliminar_via, Consultar_via;
     
     public MenuItems(){
         //ahora los items de esa opcion
         Registrar_veh = new JMenuItem("Registrar vehiculo");
         Editar_veh = new JMenuItem("Editar vehiculos");
         Eliminar_veh = new JMenuItem("Eliminar vehiculos");
-        Mostrar_veh = new JMenuItem("Consultar vehiculos");
+        Consultar_veh = new JMenuItem("Consultar vehiculos");
         
         Registrar_usu = new JMenuItem("Registrar usuario");
         Editar_usu = new JMenuItem("Editar usuarios");
         Eliminar_usu = new JMenuItem("Eliminar usuario");
-        Mostrar_usu = new JMenuItem("Consultar usuario");
+        Consultar_usu = new JMenuItem("Consultar usuario");
         
         Registrar_con = new JMenuItem("Registrar conductor");
-        Editar_veh = new JMenuItem("Editar conductor");
-        Eliminar_veh = new JMenuItem("Eliminar conductor");
-        Mostrar_con = new JMenuItem("Consultar conductor");
+        Editar_con = new JMenuItem("Editar conductor");
+        Eliminar_con = new JMenuItem("Eliminar conductor");
+        Consultar_con = new JMenuItem("Consultar conductor");
         
         Registrar_via = new JMenuItem("Registrar viaje");
-        Editar_veh = new JMenuItem("Editar viaje");
-        Eliminar_veh = new JMenuItem("Eliminar viaje");
-        Mostrar_via = new JMenuItem("Consultar viaje");
+        Editar_via = new JMenuItem("Editar viaje");
+        Eliminar_via = new JMenuItem("Eliminar viaje");
+        Consultar_via = new JMenuItem("Consultar viaje");
     }
 
     public JMenuItem getRegistrar_veh() {
@@ -66,12 +66,12 @@ public class MenuItems extends JMenuItem{
         this.Eliminar_veh = Eliminar_veh;
     }
 
-    public JMenuItem getMostrar_veh() {
-        return Mostrar_veh;
+    public JMenuItem getConsultar_veh() {
+        return Consultar_veh;
     }
 
-    public void setMostrar_veh(JMenuItem Mostrar_veh) {
-        this.Mostrar_veh = Mostrar_veh;
+    public void setConsultar_veh(JMenuItem Mostrar_veh) {
+        this.Consultar_veh = Mostrar_veh;
     }
 
     public JMenuItem getRegistrar_usu() {
@@ -98,12 +98,12 @@ public class MenuItems extends JMenuItem{
         this.Eliminar_usu = Eliminar_usu;
     }
 
-    public JMenuItem getMostrar_usu() {
-        return Mostrar_usu;
+    public JMenuItem getConsultar_usu() {
+        return Consultar_usu;
     }
 
-    public void setMostrar_usu(JMenuItem Mostrar_usu) {
-        this.Mostrar_usu = Mostrar_usu;
+    public void setConsultar__usu(JMenuItem Mostrar_usu) {
+        this.Consultar_usu = Mostrar_usu;
     }
 
     public JMenuItem getRegistrar_con() {
@@ -130,12 +130,12 @@ public class MenuItems extends JMenuItem{
         this.Eliminar_con = Eliminar_con;
     }
 
-    public JMenuItem getMostrar_con() {
-        return Mostrar_con;
+    public JMenuItem getConsultar_con() {
+        return Consultar_con;
     }
 
-    public void setMostrar_con(JMenuItem Mostrar_con) {
-        this.Mostrar_con = Mostrar_con;
+    public void setConsultar_con(JMenuItem Mostrar_con) {
+        this.Consultar_con = Mostrar_con;
     }
 
     public JMenuItem getRegistrar_via() {
@@ -162,12 +162,12 @@ public class MenuItems extends JMenuItem{
         this.Eliminar_via = Eliminar_via;
     }
 
-    public JMenuItem getMostrar_via() {
-        return Mostrar_via;
+    public JMenuItem getConsultar_via() {
+        return Consultar_via;
     }
 
-    public void setMostrar_via(JMenuItem Mostrar_via) {
-        this.Mostrar_via = Mostrar_via;
+    public void setConsultar_via(JMenuItem Mostrar_via) {
+        this.Consultar_via = Mostrar_via;
     }
     
 }

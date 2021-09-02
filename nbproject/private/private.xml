@@ -6,7 +6,9 @@
             <file>file:/D:/Documentos/NetBeansProjects/MVCLuber/src/view/Codigo_prueba_FrameVehiculo.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/MVCLuber/src/components/Menu.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/MVCLuber/src/view/FPrincipal.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/MVCLuber/src/view/FI_Vehiculos/EliminarVehiculos.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/MVCLuber/src/view/FI_Vehiculos/EditarVehiculos.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/MVCLuber/src/dao/VehiculoDAOJDBCImpl.java</file>
             <file>file:/D:/Documentos/NetBeansProjects/MVCLuber/src/view/FI_Vehiculos/RegistroVehiculos.java</file>
         </group>
     </open-files>

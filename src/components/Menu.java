@@ -41,6 +41,12 @@ public class Menu extends JMenuBar{
     //frame para editar
     EditarVehiculos editarVehiculos;
     
+    //frame para eliminar
+    EliminarVehiculos eliminarVehiculos;
+    
+    //frame consultar vehiculos
+    ConsultarVehiculos consultarVehiculos;
+    
     public Menu() {
         //Aqui creo todo lo respectivo que tenga que ver con el menu
         //inicializamos la variable principal de nuestro menu
@@ -64,7 +70,7 @@ public class Menu extends JMenuBar{
         menuItemPrincipal.getVehiculo_principal().add(menuItems.getRegistrar_veh());
         menuItemPrincipal.getVehiculo_principal().add(menuItems.getEditar_veh());
         menuItemPrincipal.getVehiculo_principal().add(menuItems.getEliminar_veh());
-        menuItemPrincipal.getVehiculo_principal().add(menuItems.getMostrar_veh());
+        menuItemPrincipal.getVehiculo_principal().add(menuItems.getConsultar_veh());
         
         //metodo de escucha para el formulario de registro
         menuItems.getRegistrar_veh().addActionListener(new ActionListener() {
@@ -83,10 +89,17 @@ public class Menu extends JMenuBar{
             }
         });
         
-        menuItems.getMostrar_veh().addActionListener(new ActionListener() {
+        menuItems.getConsultar_veh().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                btnMostrar();
+                btnConsultar();
+            }
+        });
+        
+        menuItems.getEliminar_veh().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                btnEliminar();
             }
         });
     }
@@ -97,6 +110,8 @@ public class Menu extends JMenuBar{
             registroVehiculos.getVehiculoForm();
             escritorio.add(registroVehiculos.getVehiculoForm());
             registroVehiculos.getVehiculoForm().setVisible(true);
+            //editarVehiculos.getEditarVehiculoForm().dispose();
+            //eliminarVehiculos.getEliminarVehiculoForm().dispose();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -109,6 +124,8 @@ public class Menu extends JMenuBar{
             editarVehiculos.getEditarVehiculoForm();
             escritorio.add(editarVehiculos.getEditarVehiculoForm());
             editarVehiculos.getEditarVehiculoForm().setVisible(true);
+            //registroVehiculos.getVehiculoForm().dispose();
+            //eliminarVehiculos.getEliminarVehiculoForm().dispose();
         } catch(Exception ex){
             ex.printStackTrace();
         }
@@ -116,13 +133,22 @@ public class Menu extends JMenuBar{
     
     public void btnEliminar(){
         try{
+            eliminarVehiculos = new EliminarVehiculos();
+            eliminarVehiculos.getEliminarVehiculoForm();
+            escritorio.add(eliminarVehiculos.getEliminarVehiculoForm());
+            eliminarVehiculos.getEliminarVehiculoForm().setVisible(true);
+            //editarVehiculos.getEditarVehiculoForm().dispose();
+            //registroVehiculos.getRegistroVehiculos().dispose();
         } catch(Exception ex){
             ex.printStackTrace();
         }
     }
     
-    public void btnMostrar(){
+    public void btnConsultar(){
         try{
+            consultarVehiculos = new ConsultarVehiculos();
+            escritorio.add(consultarVehiculos.getConsultarVehiculo());
+            consultarVehiculos.getConsultarVehiculo().setVisible(true);
         } catch(Exception ex){
             ex.printStackTrace();
         }
