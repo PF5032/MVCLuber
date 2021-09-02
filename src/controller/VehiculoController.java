@@ -7,6 +7,7 @@ package controller;
 
 import dao.IVehiculoDAO;
 import dao.VehiculoDAOJDBCImpl;
+import java.sql.Connection;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.VehiculoModel;
@@ -23,12 +24,13 @@ public class VehiculoController {
         vehiculoDAO = new VehiculoDAOJDBCImpl();
     }
     
+    //En editar y eliminar ocupo que me traiga todos los campos de la tabla vehiculos
     public DefaultTableModel consultarVehiculos(){
         //un arreglo del tipo string para obtener los atributos de vehiculo
         String[] titulos = {"Placa", "Marca", "Modelo", "Año", "Capacidad", "Color", "Kilometros"};
         
         DefaultTableModel model = new DefaultTableModel(null, titulos);
-        List<VehiculoModel> vehiculos = vehiculoDAO.obtenerVehiculos(); //creo una variable la cual tendra los vehiculos que traera la consulta
+        List<VehiculoModel> vehiculos = vehiculoDAO.consultarVehiculos(); //creo una variable la cual tendra los vehiculos que traera la consulta
         for(VehiculoModel vehiculo: vehiculos){
             String[] fila = new String[7]; //uso las mismas variables del ejemplo solo para guiarme
             fila[0] = vehiculo.getVehPlaca()+"";
@@ -56,5 +58,4 @@ public class VehiculoController {
     public void eliminarVehiculo(String placa){
         vehiculoDAO.elminarVehiculo(placa);
     }
-    
 }

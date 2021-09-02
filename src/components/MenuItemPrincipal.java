@@ -18,9 +18,6 @@ public class MenuItemPrincipal extends JMenu{
     
     public MenuItemPrincipal(){
         Vehiculo_principal = new JMenu("Vehiculos");
-        Usuario_principal = new JMenu("Usuarios");
-        Conductor_principal = new JMenu("Conductor");
-        Viaje_principal = new JMenu("Viajes");
     }
 
     public JMenu getVehiculo_principal() {

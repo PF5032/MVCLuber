@@ -14,11 +14,11 @@ import model.VehiculoModel;
  */
 public interface IVehiculoDAO {
     //defino los metodos para usar los datos de vehiculo luego
-    public List<VehiculoModel> obtenerVehiculos();
+    public List<VehiculoModel> consultarVehiculos();
     
     //en mi caso al ser un vehiculo el cual se identifica por la placa
     //el atributo placa es una cadena mas no un entero
-    public VehiculoModel obtenerVehiculo(String placa);
+    public VehiculoModel consultarVehiculo(String placa);
     
     //el metodo para agregar un vehiculo nuevo
     public void agregarVehiculo(VehiculoModel vehiculo);

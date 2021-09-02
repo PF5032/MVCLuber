@@ -28,7 +28,7 @@ import util.Conexion;
 public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
 
     @Override
-    public List<VehiculoModel> obtenerVehiculos() {
+    public List<VehiculoModel> consultarVehiculos() {
         Connection conn = null; //definimos la variable para nuestra conexion
         List<VehiculoModel> vehiculos = new ArrayList<>(); //creo el respectivo arreglo para los vehiculos
         
@@ -51,7 +51,7 @@ public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
     }
 
     @Override
-    public VehiculoModel obtenerVehiculo(String placa) {
+    public VehiculoModel consultarVehiculo(String placa) {
         //creo la variable de conexion
         Connection conn = null;
         VehiculoModel vehiculo = null; //defino un objeto de vehiculo como nulo

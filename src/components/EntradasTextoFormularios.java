@@ -10,16 +10,6 @@ public class EntradasTextoFormularios extends JTextField{
             textFieldVehModelo, textFieldVehAño,textFieldVehCapacidad,
             textFieldVehColor,textFieldVehKilometros;
     
-    //Entradas de texto para usuarios
-    JTextField textFieldUsuCedula, textFieldUsuNombres
-            , textFieldUsuApellidos, textFieldUsuCorreo;
-            
-    //Entradas de texto para conductores
-    JTextField textFieldUsuCedula_con, textFieldVehPlaca_con;
-    
-    //Entradas de texto para viajes
-    JTextField viaId, usuCedula_usuario, conCedula_con, viaFecha;
-    
     //Entrada para busquedas
     JTextField textFieldConsultar_datos;
     
@@ -88,86 +78,6 @@ public class EntradasTextoFormularios extends JTextField{
 
     public void setTextFieldVehKilometros(JTextField textFieldVehKilometros) {
         this.textFieldVehKilometros = textFieldVehKilometros;
-    }
-
-    public JTextField getTextFieldUsuCedula() {
-        return textFieldUsuCedula;
-    }
-
-    public void setTextFieldUsuCedula(JTextField textFieldUsuCedula) {
-        this.textFieldUsuCedula = textFieldUsuCedula;
-    }
-
-    public JTextField getTextFieldUsuNombres() {
-        return textFieldUsuNombres;
-    }
-
-    public void setTextFieldUsuNombres(JTextField textFieldUsuNombres) {
-        this.textFieldUsuNombres = textFieldUsuNombres;
-    }
-
-    public JTextField getTextFieldUsuApellidos() {
-        return textFieldUsuApellidos;
-    }
-
-    public void setTextFieldUsuApellidos(JTextField textFieldUsuApellidos) {
-        this.textFieldUsuApellidos = textFieldUsuApellidos;
-    }
-
-    public JTextField getTextFieldUsuCorreo() {
-        return textFieldUsuCorreo;
-    }
-
-    public void setTextFieldUsuCorreo(JTextField textFieldUsuCorreo) {
-        this.textFieldUsuCorreo = textFieldUsuCorreo;
-    }
-
-    public JTextField getTextFieldUsuCedula_con() {
-        return textFieldUsuCedula_con;
-    }
-
-    public void setTextFieldUsuCedula_con(JTextField textFieldUsuCedula_con) {
-        this.textFieldUsuCedula_con = textFieldUsuCedula_con;
-    }
-
-    public JTextField getTextFieldVehPlaca_con() {
-        return textFieldVehPlaca_con;
-    }
-
-    public void setTextFieldVehPlaca_con(JTextField textFieldVehPlaca_con) {
-        this.textFieldVehPlaca_con = textFieldVehPlaca_con;
-    }
-
-    public JTextField getViaId() {
-        return viaId;
-    }
-
-    public void setViaId(JTextField viaId) {
-        this.viaId = viaId;
-    }
-
-    public JTextField getUsuCedula_usuario() {
-        return usuCedula_usuario;
-    }
-
-    public void setUsuCedula_usuario(JTextField usuCedula_usuario) {
-        this.usuCedula_usuario = usuCedula_usuario;
-    }
-
-    public JTextField getConCedula_con() {
-        return conCedula_con;
-    }
-
-    public void setConCedula_con(JTextField conCedula_con) {
-        this.conCedula_con = conCedula_con;
-    }
-
-    public JTextField getViaFecha() {
-        return viaFecha;
-    }
-
-    public void setViaFecha(JTextField viaFecha) {
-        this.viaFecha = viaFecha;
     }
 
     public JTextField getTextFieldConsultar_datos() {

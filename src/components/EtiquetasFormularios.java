@@ -17,15 +17,6 @@ public class EtiquetasFormularios extends JLabel{
     //Etiquetas para vehiculo
     JLabel placa, marca, modelo, año, capacidad, color, kilometros;
     
-    //Etiquetas para usuario
-    JLabel cedula_usuario, nombres, apellidos, correo;
-    
-    //Etiquetas para conductor
-    JLabel cedula_conductor, vehPlacaC;
-    
-    //Etiquetas para viaje
-    JLabel id_viaje, viaje_cedula, conductor_cedula, via_fecha;
-    
     //tipos de joption
     JLabel buscar_datos;
     
@@ -83,86 +74,6 @@ public class EtiquetasFormularios extends JLabel{
 
     public void setKilometros(JLabel kilometros) {
         this.kilometros = kilometros;
-    }
-
-    public JLabel getCedula_usuario() {
-        return cedula_usuario;
-    }
-
-    public void setCedula_usuario(JLabel cedula_usuario) {
-        this.cedula_usuario = cedula_usuario;
-    }
-
-    public JLabel getNombres() {
-        return nombres;
-    }
-
-    public void setNombres(JLabel nombres) {
-        this.nombres = nombres;
-    }
-
-    public JLabel getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(JLabel apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public JLabel getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(JLabel correo) {
-        this.correo = correo;
-    }
-
-    public JLabel getCedula_conductor() {
-        return cedula_conductor;
-    }
-
-    public void setCedula_conductor(JLabel cedula_conductor) {
-        this.cedula_conductor = cedula_conductor;
-    }
-
-    public JLabel getVehPlacaC() {
-        return vehPlacaC;
-    }
-
-    public void setVehPlacaC(JLabel vehPlacaC) {
-        this.vehPlacaC = vehPlacaC;
-    }
-
-    public JLabel getId_viaje() {
-        return id_viaje;
-    }
-
-    public void setId_viaje(JLabel id_viaje) {
-        this.id_viaje = id_viaje;
-    }
-
-    public JLabel getViaje_cedula() {
-        return viaje_cedula;
-    }
-
-    public void setViaje_cedula(JLabel viaje_cedula) {
-        this.viaje_cedula = viaje_cedula;
-    }
-
-    public JLabel getConductor_cedula() {
-        return conductor_cedula;
-    }
-
-    public void setConductor_cedula(JLabel conductor_cedula) {
-        this.conductor_cedula = conductor_cedula;
-    }
-
-    public JLabel getVia_fecha() {
-        return via_fecha;
-    }
-
-    public void setVia_fecha(JLabel via_fecha) {
-        this.via_fecha = via_fecha;
     }
 
     public JLabel getBuscar_datos() {

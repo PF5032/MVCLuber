@@ -20,7 +20,12 @@ import javax.swing.JTable;
 import controller.VehiculoController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JButton;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 import model.VehiculoModel;
 
 /**
@@ -75,16 +80,6 @@ public class ConsultarVehiculos extends JInternalFrame{
          panel_datos.add(entradas_formulario.getTextFieldConsultar_datos(), BorderLayout.PAGE_START);
          panel_datos.add(consultar, BorderLayout.LINE_END);
          
-         //evento del boton
-         consultar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                //Aqui voy
-                //VehiculoModel vehiculoModel = new VehiculoModel(entradas_formulario.getTextFieldConsultar_datos().getText());
-                //controladorVehiculo.consultarVehiculos();
-            }
-        });
-         
          //creo la tabla la cual va a traer los datos
          JTable tablaConsultaVehiculo = new JTable();
          setLayout(new BorderLayout());
@@ -95,8 +90,26 @@ public class ConsultarVehiculos extends JInternalFrame{
          panel_datos.add(tablaConsultaVehiculo);
          //lo agrego al formulario
          consultarVehiculo.setContentPane(panel_contenedor);
+         TableRowSorter trs;
+         trs = new TableRowSorter<>(controladorVehiculo.consultarVehiculos());
+         tablaConsultaVehiculo.setRowSorter(trs);
+         entradas_formulario.getTextFieldConsultar_datos().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                trs.setRowFilter(RowFilter.regexFilter(entradas_formulario.getTextFieldConsultar_datos().getText(), 0));
+            }
+
+            @Override
+            public void keyPressed(KeyEvent ke) {
+                trs.setRowFilter(RowFilter.regexFilter(entradas_formulario.getTextFieldConsultar_datos().getText(), 0));
+            }
+
+            @Override
+            public void keyReleased(KeyEvent ke) {
+                trs.setRowFilter(RowFilter.regexFilter(entradas_formulario.getTextFieldConsultar_datos().getText(), 0));
+            }
+        });
     }
-    
     public JInternalFrame getConsultarVehiculo() {
         return consultarVehiculo;
     }

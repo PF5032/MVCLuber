@@ -27,7 +27,7 @@ public class VehiculoModel {
         this.vehColor = vehColor;
         this.vehKilometros = vehKilometros;
     }
-
+    
     public int getVehKilometros() {
         return vehKilometros;
     }
