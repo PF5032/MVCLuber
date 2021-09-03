@@ -12,10 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 import util.SpringUtilities;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -25,6 +21,7 @@ import model.VehiculoModel;
 
 //importo al controlador de vehiculo
 import controller.VehiculoController;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -113,13 +110,10 @@ public class RegistroVehiculos extends JInternalFrame{
         panel.add(etiquetas.getKilometros());
         panel.add(entradas.getTextFieldVehKilometros());
         
-        //botones
-        //panel.add();
-        
-        //agrego todos los componentes a mi formulario principal
-        //vehiculoForm.add(panel_principal);
-        
-        //eventos para los botones
+        /*
+        *   Metodo para hacer el respectivo registro de los datos nuevo
+        *   @return El mensaje de que lo ingresado en la caja de texto concuerda
+        */
         RegistrarVeh.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -132,7 +126,6 @@ public class RegistroVehiculos extends JInternalFrame{
                 int kilometraje = Integer.parseInt(entradas.getTextFieldVehKilometros().getText());
                 VehiculoModel vehiculo = new VehiculoModel(placa, marca, modelo, año, capacidad, color, kilometraje);
                 vehiculoControlador.agregarVehiculo(vehiculo);
-                JOptionPane.showMessageDialog(null, "Registro creado de manera exitosa");
             }
         });
         //ubicacion de los paneles
@@ -146,7 +139,7 @@ public class RegistroVehiculos extends JInternalFrame{
         
         //Paso el contenido del panel
         vehiculoForm.setContentPane(panel_principal);
-        panel_principal.add(panel);
+        panel_principal.add(panel, BorderLayout.CENTER);
         //panel_principal.setBackground(Color.red);
         //panel.setBackground(Color.yellow);
         
@@ -157,12 +150,11 @@ public class RegistroVehiculos extends JInternalFrame{
         
         
         //creo un panel nuevo para los botones
-        JPanel panel_botones = new JPanel();
+        JPanel panel_botones = new JPanel(new BorderLayout());
         
-        panel_botones.add(RegistrarVeh);
-        //panel_botones.setBackground(Color.green);
-        panel_botones.setLocation(120, 0);
-        panel_principal.add(panel_botones, BorderLayout.PAGE_END);
+        panel_botones.add(RegistrarVeh, BorderLayout.SOUTH);
+        
+        panel_principal.add(panel_botones);
         
         //vehiculoForm.add(panel_principal, BorderLayout.CENTER);
         

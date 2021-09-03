@@ -1,81 +1,79 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package components;
 
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 
 import view.FI_Vehiculos.*;
-import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JDesktopPane;
-import javax.swing.JOptionPane;
-import components.MenuItemPrincipal;
-import components.MenuItems;
 
+//  @return El metodo principal hereda de la clase JMenuBar
 public class Menu extends JMenuBar{
     
-    //creo el menu y luego le agrego los respectivos items
-    JMenuBar MenuPrincipal; //este es como el contenido principal
+    //  @return Creo el menu el cual va a contener las otras clases del mismo
+    //  @see MenuPrincipal#menuItemPrincipal#menuItem
+    JMenuBar MenuPrincipal;
     
-    //traigo los items principales del menu
+    //  @return Mediante esta variable puedo obtener el acceso al respectivo item principal(contenedor principal)
     MenuItemPrincipal menuItemPrincipal;
     
-    //traigo los items de la clase MenuItems
+    //  @return Ahora se entiende mejor, menuItems es un subitem del menu.
+    //  @see Tenemos la clase MenuItemPrincipal#getVehiculo_principal#... (algunas de las 4 opciones).
     MenuItems menuItems;
     
-    //JDesktopPane escritorio;
+    /*
+        @return Importante por medio de esta variable es que puedo mostrar los formularios internos
+                o llamados JInternalFrame, es un contenedor absoluto o el principal de la ventana.
+    */
     JDesktopPane escritorio;
-    //frame de registro
+    
+    //  @param Creo las 4 variables las cuales hacen referencia a los items de la seccion que los contiene
     RegistroVehiculos registroVehiculos;
     
-    //frame para editar
     EditarVehiculos editarVehiculos;
     
-    //frame para eliminar
     EliminarVehiculos eliminarVehiculos;
     
-    //frame consultar vehiculos
     ConsultarVehiculos consultarVehiculos;
     
+    //  @return El metodo es el principal de la clase, nos devuelve el funcionamiento correcto del formulario.
     public Menu() {
-        //Aqui creo todo lo respectivo que tenga que ver con el menu
-        //inicializamos la variable principal de nuestro menu
+        //  @param Inicializo el parametro de nuestro menu para poder ser visible, en el contenedor escritorio
         MenuPrincipal = new JMenuBar();
-        //setJMenuBar(MenuPrincipal);
+        
+        //  @param Inicializo el contenedor principal del formulario, el encargado de mostrarnos todos los metodos graficos.
         escritorio = new JDesktopPane();
         
-        //para las entradas principales del menu
+        //  @param Al igual que los anteriores parametros, inicio este ya que el metodo me saldra nulo, al no saber de donde se requiere enviar o recibir la informacion.
         menuItemPrincipal = new MenuItemPrincipal();
         
-        //para los items de la entrada principal
+        //  @param Este parametro es para los formularios internos de la vista, el cual es contenido tambien por la seccion principal.
         menuItems = new MenuItems();
         
-        //Agrego los items al menu principal
+        /*
+            @return Con el uso de MenuPrincipal.add llamo de menuItemPrincipal la seccion principal para los formularios.
+        */
         MenuPrincipal.add(menuItemPrincipal.getVehiculo_principal());
         
-        //Agrego los items a la opcion principal
+        /*
+          @param Mediante la variable ya definida de la clase MenuItemPrincipal dentro del paquete de components
+                 la cual mediante el uso del metodo getVehiculo_principal().add accedemos a la variable
+                 menuItems y poder mandar a llamar los formularios por su respectivo metodo get.
+        */
         menuItemPrincipal.getVehiculo_principal().add(menuItems.getRegistrar_veh());
         menuItemPrincipal.getVehiculo_principal().add(menuItems.getEditar_veh());
         menuItemPrincipal.getVehiculo_principal().add(menuItems.getEliminar_veh());
         menuItemPrincipal.getVehiculo_principal().add(menuItems.getConsultar_veh());
         
-        //metodo de escucha para el formulario de registro
+        /*
+            @return Los siguientes cuatro metodos, sirven para ir llamando cada formulario que esta dentro
+                    de la seccion principal, ya que Menu llama a MenuItmePrincipal y por ultimo el MenuItems
+                    donde estan nuestros formularios para ser usados.
+        */
         menuItems.getRegistrar_veh().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //JDesktopPane escritorio = new JDesktopPane();
                 btnRegistro();
-                System.out.println("*** alerta de prueba ***");
             }
         });
         
@@ -100,48 +98,67 @@ public class Menu extends JMenuBar{
             }
         });
     }
-    
+    /*
+        @return El metodo nos devuelve el acceso al formulario interno de registrar vehiculos
+                el cual esta ubicado en la vista, view.FI_VEHICULOS/RegistrarVehiculos
+    */
     public void btnRegistro(){
+        /*
+            @throw En caso de que suceda un error, el metodo lanza un error indicando cual es el problema.
+                    Lo mas por defecto es que sea un valor nulo por la falta de inicializacion de la variable.
+        */
         try {
             registroVehiculos = new RegistroVehiculos();
-            registroVehiculos.getVehiculoForm();
             escritorio.add(registroVehiculos.getVehiculoForm());
             registroVehiculos.getVehiculoForm().setVisible(true);
-            //editarVehiculos.getEditarVehiculoForm().dispose();
-            //eliminarVehiculos.getEliminarVehiculoForm().dispose();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
     
-    //metofo para editar
+    /*
+        @return El metodo nos devuelve el acceso al formulario interno de editar vehiculos
+                el cual esta ubicado en la vista, view.FI_VEHICULOS/EditarVehiculos
+    */
     public void btnEditar(){
+        /*
+            @throw En caso de que suceda un error, el metodo lanza un error indicando cual es el problema.
+                    Lo mas por defecto es que sea un valor nulo por la falta de inicializacion de la variable.
+        */
         try{
             editarVehiculos = new EditarVehiculos();
-            editarVehiculos.getEditarVehiculoForm();
             escritorio.add(editarVehiculos.getEditarVehiculoForm());
             editarVehiculos.getEditarVehiculoForm().setVisible(true);
-            //registroVehiculos.getVehiculoForm().dispose();
-            //eliminarVehiculos.getEliminarVehiculoForm().dispose();
         } catch(Exception ex){
             ex.printStackTrace();
         }
     }
-    
+    /*
+        @return El metodo nos devuelve el acceso al formulario interno de eliminar vehiculos
+                el cual esta ubicado en la vista, view.FI_VEHICULOS/EliminarVehiculos
+    */
     public void btnEliminar(){
+        /*
+            @throw En caso de que suceda un error, el metodo lanza un error indicando cual es el problema.
+                    Lo mas por defecto es que sea un valor nulo por la falta de inicializacion de la variable.
+        */
         try{
             eliminarVehiculos = new EliminarVehiculos();
-            eliminarVehiculos.getEliminarVehiculoForm();
             escritorio.add(eliminarVehiculos.getEliminarVehiculoForm());
             eliminarVehiculos.getEliminarVehiculoForm().setVisible(true);
-            //editarVehiculos.getEditarVehiculoForm().dispose();
-            //registroVehiculos.getRegistroVehiculos().dispose();
         } catch(Exception ex){
             ex.printStackTrace();
         }
     }
-    
+    /*
+        @return El metodo nos devuelve el acceso al formulario interno de consultar vehiculos
+                el cual esta ubicado en la vista, view.FI_VEHICULOS/ConsultarVehiculos
+    */
     public void btnConsultar(){
+        /*
+            @throw En caso de que suceda un error, el metodo lanza un error indicando cual es el problema.
+                    Lo mas por defecto es que sea un valor nulo por la falta de inicializacion de la variable.
+        */
         try{
             consultarVehiculos = new ConsultarVehiculos();
             escritorio.add(consultarVehiculos.getConsultarVehiculo());
@@ -150,21 +167,20 @@ public class Menu extends JMenuBar{
             ex.printStackTrace();
         }
     }
-    
-    //metodos para el formulario principal
-    
-    //---- menu principal
+    /*
+        @return Tambien debo de crear un metodo para tener acceso al menu desde mi formulario principal
+                y poder mostrar la informacion que quiero colocar dentro del mismo.
+    */
     public JMenuBar getMenuPrincipal() {
         return MenuPrincipal;
     }
-    // --------
     
-    //------ Panel de escritorio
+    /*
+        @return Por medio de este metodo puedo obtener acceso a esta clase y poder llamar 
+                a mi panel de escritorio desde el formulario principal.
+    */
     public JDesktopPane getEscritorio() {
         return escritorio;
     }
-    // ----------
-
-    
     
 }

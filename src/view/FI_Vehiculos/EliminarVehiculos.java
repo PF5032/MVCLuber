@@ -57,7 +57,7 @@ public class EliminarVehiculos extends JInternalFrame{
          
         //Cargo el data del controlador vehiculo
         tablaEliminarVehiculos.setModel(controladorVehiculo.consultarVehiculos());
-         
+        
         //Agrego el panel para el contenido de la tabla que nos llenara el controlador
         panel_contenido_eliminar.add(tablaEliminarVehiculos);
          
@@ -68,6 +68,7 @@ public class EliminarVehiculos extends JInternalFrame{
         JLabel informacion = new JLabel("El registro se elimina con solo seleccionar la fila que desee");
         informacion.setForeground(Color.red);
         panel_contenido_eliminar.add(informacion);
+        panel_contenido_eliminar.add(new JScrollPane(tablaEliminarVehiculos));
         
         //Creo el evento de selecciona en la tabla
         //Lo que hace es que al ser seleccionada una fila de la tabla, esta pueda eliminarse sin necesidad de tener un boton para hacerlo

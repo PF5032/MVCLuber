@@ -1,39 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package components;
 
 import javax.swing.JMenu;
 
 /**
  *
- * @author Lau
+ * @author Juan Pablo S.
  */
+
 public class MenuItemPrincipal extends JMenu{
-    //Entradas principales del menu
-    JMenu Vehiculo_principal, Viaje_principal, Usuario_principal, 
-            Conductor_principal;
+    //  @param Creo los parametros o variables para el Itemprincipal, el cual contendra los menuItems
+    //  @see de la clase MenuItems
+    JMenu Vehiculo_principal;
     
+    //  @return Esto solo nos creara y traera un componente principal para nuestros items
     public MenuItemPrincipal(){
         Vehiculo_principal = new JMenu("Vehiculos");
     }
-
+    
+    //  @return El metodo nos devolvera el acceso al componente principal, el que carga el respectivo item
+    //  @see MenuItems#Registrar_veh, MenuItems#Editar_veh, MenuItems#Eliminar_veh, MenuItems#Consultar_veh
     public JMenu getVehiculo_principal() {
         return Vehiculo_principal;
     }
-
-    public JMenu getViaje_principal() {
-        return Viaje_principal;
-    }
-
-    public JMenu getUsuario_principal() {
-        return Usuario_principal;
-    }
-
-    public JMenu getConductor_principal() {
-        return Conductor_principal;
-    }
-    
 }

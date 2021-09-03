@@ -7,26 +7,17 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
-import util.SpringUtilities;
 
 //imports de controlador y modelo
 import controller.VehiculoController;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
-import java.sql.SQLException;
-import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import model.VehiculoModel;
 
 /**
@@ -45,7 +36,7 @@ public class EditarVehiculos extends JInternalFrame{
         //Configuracion de frame
         editarVehiculoForm = new JInternalFrame();
         editarVehiculoForm.setTitle("Editar Vehiculo");
-        editarVehiculoForm.setSize(760, 450);
+        editarVehiculoForm.setSize(760, 525);
         editarVehiculoForm.setClosable(true);
         editarVehiculoForm.setMaximizable(true);
         //----------------------------------------
@@ -69,35 +60,42 @@ public class EditarVehiculos extends JInternalFrame{
         //para poder llenar la tabla
         tablaRegistroVehiculo.setModel(controladorVehiculo.consultarVehiculos());
         
+        panel_vehiculos.add(new JLabel("Actualizar informacion vehiculo "), BorderLayout.PAGE_START);
         //panel para contenido de la tabla vehiculos
-        panel_vehiculos.add(tablaRegistroVehiculo, BorderLayout.PAGE_START);
+        panel_vehiculos.add(tablaRegistroVehiculo, BorderLayout.CENTER);
         panel_vehiculos.add(new JScrollPane(tablaRegistroVehiculo));
         //creo el panel principal
         JPanel panel_principal = new JPanel();
         
         //panel para las entradas de texto
-        JPanel entradaInformacion = new JPanel(new GridLayout(7, 1));
+        JPanel entradaInformacion = new JPanel(new GridLayout(7, 2));
+        entradaInformacion.add(registroVehiculo.etiquetas.getPlaca());
         entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehPlaca());
+        entradaInformacion.add(registroVehiculo.etiquetas.getMarca());
         entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehMarca());
+        entradaInformacion.add(registroVehiculo.etiquetas.getModelo());
         entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehModelo());
+        entradaInformacion.add(registroVehiculo.etiquetas.getAño());
         entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehAño());
+        entradaInformacion.add(registroVehiculo.etiquetas.getCapacidad());
         entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehCapacidad());
+        entradaInformacion.add(registroVehiculo.etiquetas.getColor());
         entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehColor());
+        entradaInformacion.add(registroVehiculo.etiquetas.getKilometros());
         entradaInformacion.add(registroVehiculo.entradas.getTextFieldVehKilometros());
         
         //panel para botones
         JPanel botones = new JPanel(new BorderLayout());
         JButton actualizar_datos = new JButton("Actualizar");
-        botones.add(actualizar_datos);
+        botones.add(actualizar_datos, BorderLayout.NORTH);
         
         //panel_vehiculos.add(botones, BorderLayout.SOUTH);
         
         //Paso el contenido del panel
         editarVehiculoForm.setContentPane(panel_principal);
         panel_principal.add(panel_vehiculos);
-        panel_principal.add(botones, BorderLayout.LINE_END);
-        panel_principal.add(entradaInformacion, BorderLayout.SOUTH);
-        
+        panel_principal.add(entradaInformacion);
+        panel_principal.add(botones);
         //Agrego el nuevo panel creado con las entradas
         //panel_vehiculos.add(entradaInformacion, BorderLayout.CENTER);
         

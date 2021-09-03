@@ -64,7 +64,7 @@ public class VehiculoController {
             model.addRow(fila);
         }
         return model;
-    }
+    } 
     
     //lo otros metodos vienen del dao
     
