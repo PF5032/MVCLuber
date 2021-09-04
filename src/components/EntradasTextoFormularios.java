@@ -14,7 +14,7 @@ public class EntradasTextoFormularios extends JTextField{
     JTextField textFieldConsultar_datos;
     
     public EntradasTextoFormularios(){
-        textFieldVehPlaca = new JTextField(7);
+        textFieldVehPlaca = new JTextField(10);
         textFieldVehMarca = new JTextField(10);
         textFieldVehModelo = new JTextField(10);
         textFieldVehAño = new JTextField(10);

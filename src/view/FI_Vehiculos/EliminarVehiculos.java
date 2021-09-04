@@ -40,7 +40,7 @@ public class EliminarVehiculos extends JInternalFrame{
         //Configuracion de nuestro formulario interno
         eliminarVehiculoForm = new JInternalFrame();
         eliminarVehiculoForm.setTitle("Eliminar vehiculos");
-        eliminarVehiculoForm.setSize(760, 250);
+        eliminarVehiculoForm.setSize(760, 520);
         eliminarVehiculoForm.setMaximizable(true);
         eliminarVehiculoForm.setClosable(true);
         

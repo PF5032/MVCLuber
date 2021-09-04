@@ -109,7 +109,8 @@ public class VehiculoDAOJDBCImpl implements IVehiculoDAO{
             statement.setString(7, vehiculo.getVehPlaca());
             int rowUpdated = statement.executeUpdate();
             if(rowUpdated > 0){
-                JOptionPane.showMessageDialog(null, "Registro actualizado de manera correcta");
+                //JOptionPane.showMessageDialog(null, "Registro actualizado de manera correcta");
+                System.out.println("Registro actualizado de manera correcta");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Codigo : " + ex.getErrorCode() + "\nError : " + ex.getMessage());
