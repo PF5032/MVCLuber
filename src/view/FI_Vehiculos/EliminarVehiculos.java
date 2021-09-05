@@ -41,7 +41,6 @@ public class EliminarVehiculos extends JInternalFrame{
         eliminarVehiculoForm = new JInternalFrame();
         eliminarVehiculoForm.setTitle("Eliminar vehiculos");
         eliminarVehiculoForm.setSize(760, 520);
-        eliminarVehiculoForm.setMaximizable(true);
         eliminarVehiculoForm.setClosable(true);
         
         //instancio el controlador de vehiculo

@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Lau
+ * @author 
  */
 public class ConsultarVehiculos extends JInternalFrame{
     
@@ -42,7 +42,6 @@ public class ConsultarVehiculos extends JInternalFrame{
         consultarVehiculo.setTitle("Consultar datos vehiculo");
         consultarVehiculo.setSize(760, 450);
         consultarVehiculo.setClosable(true);
-        consultarVehiculo.setMaximizable(true);
         //--------------------------------------------------------
         //defino las respectivas etiquetas para poder usarlas
         etiquetas_formulario = new EtiquetasFormularios();
@@ -79,10 +78,10 @@ public class ConsultarVehiculos extends JInternalFrame{
         JTable tablaConsultaViajesVehiculo = new JTable();
         setLayout(new BorderLayout());
         JScrollPane contenedor_tabla = new JScrollPane(tablaConsultaViajesVehiculo);
-         tablaConsultaViajesVehiculo.setModel(controladorVehiculo.consultarVehiculos());
-         panel_contenedor.add(panel_datos);
-         panel_datos.add(panel_datos_viaje, BorderLayout.SOUTH);
-         panel_datos.add(new JScrollPane(tablaConsultaVehiculo));
+        tablaConsultaViajesVehiculo.setModel(controladorVehiculo.consultarVehiculos());
+        panel_contenedor.add(panel_datos);
+        panel_datos.add(panel_datos_viaje, BorderLayout.SOUTH);
+        panel_datos.add(new JScrollPane(tablaConsultaVehiculo));
          //lo agrego al formulario
          consultarVehiculo.setContentPane(panel_contenedor);
         

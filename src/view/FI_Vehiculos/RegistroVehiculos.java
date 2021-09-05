@@ -51,7 +51,6 @@ public class RegistroVehiculos extends JInternalFrame{
         vehiculoForm.setTitle("Registro vehiculos");
         vehiculoForm.setSize(760, 520);
         vehiculoForm.setClosable(true);
-        vehiculoForm.setMaximizable(true);
         
         //creo el panel principal
         panel = new JPanel(new SpringLayout()); //new SpringLayout() 
@@ -137,13 +136,13 @@ public class RegistroVehiculos extends JInternalFrame{
                     estado.setFlag_modelo(true);
                 }
                 //validacion para año, si el año es diferente de un numero y menor a 4 o mayor a 4 digitos
-                if (!año.matches("[0-9].*") && año.length() < 4 || año.length() > 4 || año.isEmpty() || Integer.parseInt(año) == 0) {
+                if (!año.matches("[0-9]") && año.length() < 4 || año.length() > 4 || año.isEmpty() || Integer.parseInt(año) == 0) {
                     entradas.getTextFieldVehAño().setText(null);
                 } else {
                     estado.setFlag_año(true);
                 }
                 //validacion para capacidad, si la capacidad tiene letras y es mayor a 3 digitos
-                if (!capacidad.matches("[0-9].*") || capacidad.length() > 3 || capacidad.isEmpty()) {
+                if (!capacidad.matches("[0-9]") || capacidad.length() > 3 || capacidad.isEmpty()) {
                     entradas.getTextFieldVehCapacidad().setText(null);
                 } else {
                     estado.setFlag_capacidad(true);

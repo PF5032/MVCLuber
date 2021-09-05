@@ -20,10 +20,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.VehiculoModel;
 
-/**
- *
- * @author JP
- */
 public class EditarVehiculos extends JInternalFrame{
     
     JInternalFrame editarVehiculoForm;
@@ -38,7 +34,6 @@ public class EditarVehiculos extends JInternalFrame{
         editarVehiculoForm.setTitle("Editar Vehiculo");
         editarVehiculoForm.setSize(760, 525);
         editarVehiculoForm.setClosable(true);
-        editarVehiculoForm.setMaximizable(true);
         //----------------------------------------
         
         controladorVehiculo = new VehiculoController();
